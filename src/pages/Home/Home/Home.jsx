@@ -22,6 +22,9 @@ const Home = () => {
          items={items}
       ></FoodMenu>
       </div>
+      <div className=" mx-5 lg:mx-32 bg-black text-white text-center items-center my-12 h-30">
+        <p className="text-2xl py-5" >Call Us: +88 0192345678910</p>
+      </div>
     </div>
   );
 };

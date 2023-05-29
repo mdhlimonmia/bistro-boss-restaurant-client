@@ -11,7 +11,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Catagories = () => {
   return (
-    <section className="my-20">
+    <section className="my-20 mx-5 lg:mx-32">
         <SectionTitle
             subtitle={"From 11:00am to 10:00pm"}
             heading={"ORDER ONLINE"}
@@ -23,35 +23,35 @@ const Catagories = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper my-12"
+        className="mySwiper lg:my-12"
       >
         <SwiperSlide>
           <img src={slide1} alt="" />
-          <p className="uppercase text-4xl text-center text-white -mt-16">
+          <p className="uppercase lg:text-4xl text-center text-white -mt-16">
             salads
           </p>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide2} alt="" />
-          <p className="uppercase text-4xl text-center text-white -mt-16">
+          <p className="uppercase lg:text-4xl text-center text-white -mt-16">
             pizzas
           </p>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide3} alt="" />
-          <p className="uppercase text-4xl text-center text-white -mt-16">
+          <p className="uppercase lg:text-4xl text-center text-white -mt-16">
             soups
           </p>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide4} alt="" />
-          <p className="uppercase text-4xl text-center text-white -mt-16">
+          <p className="uppercase lg:text-4xl text-center text-white -mt-16">
             Desserts
           </p>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide5} alt="" />
-          <p className="uppercase text-4xl text-center text-white -mt-16">
+          <p className="uppercase lg:text-4xl text-center text-white -mt-16">
             salads
           </p>
         </SwiperSlide>

@@ -6,6 +6,7 @@ import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";
 import Catagories from "../Catagories/Catagories";
 import ChefService from "../ChefService/ChefService";
+import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
   const [menu] = useMenu();
@@ -26,6 +27,7 @@ const Home = () => {
       ></SectionTitle>
       <FoodCards cards={cards}></FoodCards>
       <AboutUs></AboutUs>
+      <Testimonials></Testimonials>
     </div>
   );
 };

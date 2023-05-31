@@ -17,7 +17,11 @@ const Home = () => {
       <Banner></Banner>
       <Catagories></Catagories>
       <ChefService></ChefService>
-        <FoodMenu items={items}></FoodMenu>
+      <SectionTitle
+        subtitle={"Check it out"}
+        heading={"from our menu"}
+      ></SectionTitle>
+      <FoodMenu items={items}></FoodMenu>
       <div className=" mx-5 lg:mx-32 bg-black text-white text-center items-center my-12 h-30">
         <p className="text-2xl py-5">Call Us: +88 0192345678910</p>
       </div>

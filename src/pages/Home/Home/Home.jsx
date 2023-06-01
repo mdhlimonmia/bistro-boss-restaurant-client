@@ -7,6 +7,7 @@ import Banner from "../Banner/Banner";
 import Catagories from "../Catagories/Catagories";
 import ChefService from "../ChefService/ChefService";
 import Testimonials from "../Testimonials/Testimonials";
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   const [menu] = useMenu();
@@ -14,6 +15,10 @@ const Home = () => {
   const cards = menu.filter((item) => item.category === "salad");
   return (
     <div>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+      
       <Banner></Banner>
       <Catagories></Catagories>
       <ChefService></ChefService>

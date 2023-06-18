@@ -14,7 +14,7 @@ const ShopTab = () => {
     <div className="my-12">
       <Tabs>
         <TabList className= "py-5 text-center lg:mx-32">
-          <Tab>SALAd</Tab>
+          <Tab>SALAD</Tab>
           <Tab>PIZZA</Tab>
           <Tab>SOUPS</Tab>
           <Tab>DESSERTS</Tab>

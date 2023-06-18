@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div>
       <Helmet>
-        <title>Contact Us</title>
+        <title>BISTRO | CONTACT</title>
       </Helmet>
 
       <Cover img={contactImg} title="contact us"></Cover>

@@ -6,7 +6,7 @@ const OurShop = () => {
   return (
     <div>
       <Helmet>
-        <title>Our Shop</title>
+        <title>BISTRO | SHOP</title>
       </Helmet>
 
       <Cover img={shopImg} title="Our Shop"></Cover>

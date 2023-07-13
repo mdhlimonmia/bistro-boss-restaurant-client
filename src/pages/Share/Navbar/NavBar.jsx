@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 
 const NavBar = () => {
+  const {user} = useContext(AuthContext);
   const navItem = (
     <>
       <Link to='/' >Home</Link>
@@ -10,6 +13,7 @@ const NavBar = () => {
       <Link to='/shop' >Our Shop</Link>
       <Link to='/login' >Login</Link>
       <Link to='/signup' >SignUp</Link>
+      { user ? <p>{user.email}</p> : <></>}
     </>
   )
   return (

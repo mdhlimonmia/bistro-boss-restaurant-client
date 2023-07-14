@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 const SignUp = () => {
-  const { createUser, setUser } = useContext(AuthContext);
+  const { createUser, setUser, updateUser} = useContext(AuthContext);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
  const onSubmit = data =>{
@@ -21,7 +21,14 @@ const SignUp = () => {
     // Signed in 
      setUser(userCredential.user);
 
-    // ...
+     updateUser(data.name, data.photoUrl)
+     .then(() => {
+      // Profile updated!
+      // ...
+    }).catch((error) => {
+      // An error occurred
+      // ...
+    });
   })
   .catch((error) => {
     const errorMessage = error.message;
@@ -56,6 +63,18 @@ const SignUp = () => {
                   placeholder="name"
                   className="input input-bordered  bg-white"
                   {...register("name", { required: true })}
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">PhotoURL</span>
+                </label>
+                <input
+                  type="text"
+                  name="photoUrl"
+                  placeholder="image.jpg"
+                  className="input input-bordered  bg-white"
+                  {...register("photoUrl", { required: true })}
                 />
               </div>
               <div className="form-control">

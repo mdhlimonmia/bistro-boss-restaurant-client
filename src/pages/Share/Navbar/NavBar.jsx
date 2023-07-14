@@ -2,20 +2,46 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
-
 const NavBar = () => {
-  const {user} = useContext(AuthContext);
+  const { user, signOutUser, createUser} = useContext(AuthContext);
+
+  const handelSignOut = () => {
+    signOutUser()
+      .then(() => {
+        createUser(null);
+      })
+      .catch(() => {
+        // An error happened.
+      });
+  };
   const navItem = (
     <>
-      <Link to='/' >Home</Link>
-      <Link to = '/contact'>Contact Us</Link>
-      <Link to='/menu' >Our Menu</Link>
-      <Link to='/shop' >Our Shop</Link>
-      <Link to='/login' >Login</Link>
-      <Link to='/signup' >SignUp</Link>
-      { user ? <p>{user.email}</p> : <></>}
+      <Link to="/">Home</Link>
+      <Link to="/contact">Contact Us</Link>
+      <Link to="/menu">Our Menu</Link>
+      <Link to="/shop">Our Shop</Link>
+      {user ? (
+        (
+          <>
+            {" "}
+            <img
+              className="w-10 h-10 rounded-full hover:{}"
+              src={user.photoURL}
+              alt=""
+            />{" "}
+            <p className="">{user.displayName}</p>
+            <p onClick={handelSignOut} className="hover:cursor-pointer">LogOut</p>
+          </>
+        ) || <p>{user.displayName}</p> || <p>{user.email}</p>
+      ) : (
+        <>
+          {" "}
+          <Link to="/login">Login</Link>
+          {/* <Link to="/signup">SignUp</Link> */}
+        </>
+      )}
     </>
-  )
+  );
   return (
     <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
       <div className="navbar-start">
@@ -44,12 +70,12 @@ const NavBar = () => {
           </ul>
         </div>
         <div>
-        <p className="normal-case text-xl">Bistro Boss</p>
-        <p className="normal-case text-xl">Restaurant</p>
+          <p className="normal-case text-xl">Bistro Boss</p>
+          <p className="normal-case text-xl">Restaurant</p>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal gap-5 px-1">
+        <ul className="menu menu-horizontal gap-5 px-1 items-center">
           {navItem}
         </ul>
       </div>

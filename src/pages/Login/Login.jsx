@@ -6,24 +6,39 @@ import loginImg from "../../assets/others/authentication2.png";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import SocialLogin from "../Share/SocialLogin/SocialLogin";
+import { useForm } from "react-hook-form";
 
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
-
-  const {signInGoogle} = useContext(AuthContext);
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {signIn, setUser} = useContext(AuthContext);
   const captchaRef = useRef(null);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
 
-  const handelLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-  };
+  // const handelLogin = (event) => {
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+  //   console.log(email, password);
+  // };
+
+  const onSubmit = (data) =>{
+    signIn(data.email, data. password)
+    .then((userCredential) => {
+      // Signed in 
+      setUser(userCredential.user);
+      // ...
+    })
+    .catch((error) => {
+      console.log( error.message);
+    });
+  }
+
+
 
   const handleValidateCaptcha = () => {
     // const user_captcha_value = event.target.value;
@@ -54,7 +69,7 @@ const Login = () => {
           <div className="card md:w-1/2 max-w-sm flex-shrink-0 text-black">
             <h1 className="text-5xl ml-8 font-bold">Login now!</h1>
 
-            <form onSubmit={handelLogin} className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -62,6 +77,7 @@ const Login = () => {
                 <input
                   type="email"
                   name="email"
+                  {...register("email", { required: true })}
                   placeholder="email"
                   className="input input-bordered  bg-white"
                 />
@@ -74,6 +90,7 @@ const Login = () => {
                 <input
                   type="password"
                   name="password"
+                  {...register("password", { required: true })}
                   placeholder="password"
                   className="input input-bordered bg-white"
                 />

@@ -4,8 +4,14 @@ import Main from "../Layout/Main";
 import OurMenu from "../pages/OurMenu/OurMenu";
 import OurShop from "../pages/OurShop/OurShop";
 import Contact from "../pages/Contact/Contact";
-import Login from "../pages/login/login";
 import SignUp from "../pages/SignUp/SignUp";
+import Login from "../pages/Login/Login";
+import Dashboard from "../Layout/Dashboard";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import AddItems from "../pages/Dashboard/AddItems/AddItems";
+import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
+import ManageBooking from "../pages/Dashboard/ManageBooking/ManageBooking";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +43,32 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>
       }
     ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "adminhome",
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: "additems",
+        element: <AddItems></AddItems>
+      },
+      {
+        path: "manageitems",
+        element: <ManageItems></ManageItems>
+      },
+      {
+        path: "managebooking",
+        element: <ManageBooking></ManageBooking>
+      },
+      {
+        path: "allusers",
+        element: <AllUsers></AllUsers>
+      }
+    ]
   },
   {
     path: "*",

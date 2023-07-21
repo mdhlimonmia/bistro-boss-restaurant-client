@@ -7,20 +7,20 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import SocialLogin from "../Share/SocialLogin/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 const SignUp = () => {
-  const { createUser, setUser, updateUser} = useContext(AuthContext);
+  const { createUser, updateUser} = useContext(AuthContext);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
  const onSubmit = data =>{
   createUser(data.email, data.password)
   .then((userCredential) => {
     // Signed in 
-     setUser(userCredential.user);
-
+    navigate("/");
      updateUser(data.name, data.photoUrl)
      .then(() => {
       // Profile updated!
@@ -29,6 +29,7 @@ const SignUp = () => {
       // An error occurred
       // ...
     });
+
   })
   .catch((error) => {
     const errorMessage = error.message;
@@ -108,15 +109,15 @@ const SignUp = () => {
                   disabled={false}
                   className="btn  text-white bg-[#D1A054B2] hover:bg-[#D1A054] border-0"
                   type="submit"
-                  value="Login"
+                  value="Sign Up"
                 />
               </div>
             </form>
             <div className="text-center space-y-5">
               <h1 className="text-[#D1A054]">
                 Already registered?{" "}
-                <span className="text-[#D1A054] hover:text-[#306EFF] hover:cursor-pointer">
-                  <Link to="/login"> Go to log in</Link>
+                <span className="text-[#306EFF] hover:cursor-pointer">
+                  <Link to="/login" > Go to log in</Link>
                 </span>
               </h1>
               <h2>or sign in with</h2>

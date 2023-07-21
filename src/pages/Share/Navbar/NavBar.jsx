@@ -2,14 +2,17 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from 'react-icons/fa';
 import { AuthContext } from "../../../provider/AuthProvider";
+import useCart from "../../../components/useCart/useCart";
 
 const NavBar = () => {
-  const { user, signOutUser, createUser} = useContext(AuthContext);
-
+  const { user, signOutUser, setUser} = useContext(AuthContext);
+  const [cart] = useCart();
   const handelSignOut = () => {
     signOutUser()
       .then(() => {
-        createUser(null);
+        // setUser(null);
+        // console.log("kalmal");
+
       })
       .catch(() => {
         // An error happened.
@@ -84,9 +87,9 @@ const NavBar = () => {
       </div>
       <div className="navbar-end">
       <Link to="/">
-                <button className="btn bg-transparent border-0 p-2 gap-2">
-                    <FaShoppingCart className="text-[#D1A054] text-3xl"></FaShoppingCart>
-                    <div className="badge badge-secondary text-xl">+ 0</div>
+                <button className="btn bg-transparent border-0  gap-2">
+                    <FaShoppingCart className="text-white hover:text-[#D1A054] text-3xl"></FaShoppingCart>
+                    <div className="badge badge-secondary text-xl">+ {cart?.length || 0}</div>
                 </button>
             </Link>
       </div>

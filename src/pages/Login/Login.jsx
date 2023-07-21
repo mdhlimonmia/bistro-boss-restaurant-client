@@ -4,7 +4,7 @@ import {loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha,} from "react-si
 import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../Share/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 
@@ -12,12 +12,16 @@ import { useForm } from "react-hook-form";
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const {signIn, setUser} = useContext(AuthContext);
+  const {signIn, user} = useContext(AuthContext);
   const captchaRef = useRef(null);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
 
+  const location = useLocation();
+  const navigate = useNavigate()
+  const from = location?.state?.from?.pathname || "/";
+  
   // const handelLogin = (event) => {
   //   event.preventDefault();
   //   const form = event.target;
@@ -28,9 +32,9 @@ const Login = () => {
 
   const onSubmit = (data) =>{
     signIn(data.email, data. password)
-    .then((userCredential) => {
+    .then(() => {
       // Signed in 
-      setUser(userCredential.user);
+      navigate(from);
       // ...
     })
     .catch((error) => {
@@ -132,7 +136,7 @@ const Login = () => {
               </div>
             </form>
             <div className="text-center space-y-5">
-              <h1 className="text-[#D1A054]">New Here? <span className="hover:text-[#306EFF] hover:cursor-pointer"><Link to="/signup">Create a New Account</Link></span></h1>
+              <h1 className="text-[#D1A054]">New Here? <span className="text-[#306EFF] hover:cursor-pointer"><Link to="/signup" >Create a New Account</Link></span></h1>
               <h2>or sign in with</h2>
              <SocialLogin></SocialLogin>
             </div>

@@ -1,10 +1,10 @@
-import FoodCard from "./FoodCard";
+import FoodCard from "./FoodCart";
 
-const FoodCards = ({cards}) => {
+const FoodCarts = ({carts}) => {
     return (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-32 gap-5">
             {
-                cards?.map(card => <FoodCard
+                carts?.map(card => <FoodCard
                 key = {card._id}
                 card = {card}
                 ></FoodCard>)
@@ -13,4 +13,4 @@ const FoodCards = ({cards}) => {
     );
 };
 
-export default FoodCards;
+export default FoodCarts;

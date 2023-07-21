@@ -1,7 +1,7 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../../components/useMenu/useMenu";
-import FoodCards from "../../components/FoodCards/FoodCards"
+import FoodCarts from "../../components/FoodCarts/FoodCarts"
 
 const ShopTab = () => {
     const [menu] = useMenu();
@@ -22,19 +22,19 @@ const ShopTab = () => {
         </TabList>
 
         <TabPanel>
-          <FoodCards cards={salad} ></FoodCards>
+          <FoodCarts carts={salad} ></FoodCarts>
         </TabPanel>
         <TabPanel>
-          <FoodCards cards={pizza} ></FoodCards>
+          <FoodCarts carts={pizza} ></FoodCarts>
         </TabPanel> 
         <TabPanel>
-          <FoodCards cards={soups} ></FoodCards>
+          <FoodCarts carts={soups} ></FoodCarts>
         </TabPanel>
         <TabPanel>
-          <FoodCards cards={desserts} ></FoodCards>
+          <FoodCarts carts={desserts} ></FoodCarts>
         </TabPanel>
         <TabPanel>
-          <FoodCards cards={drinks} ></FoodCards>
+          <FoodCarts carts={drinks} ></FoodCarts>
         </TabPanel>
       </Tabs>
     </div>

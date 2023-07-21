@@ -1,4 +1,4 @@
-import FoodCards from "../../../components/FoodCards/FoodCards";
+import FoodCarts from "../../../components/FoodCarts/FoodCarts";
 import FoodMenu from "../../../components/FoodMenu/FoodMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useMenu from "../../../components/useMenu/useMenu";
@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet-async';
 const Home = () => {
   const [menu] = useMenu();
   const items = menu.filter((item) => item.category === "popular");
-  const cards = menu.filter((item) => item.category === "salad");
+  const carts = menu.filter((item) => item.category === "salad");
   return (
     <div>
       <Helmet>
@@ -34,7 +34,7 @@ const Home = () => {
         subtitle={"Should Try"}
         heading={"CHEF RECOMMENDS"}
       ></SectionTitle>
-      <FoodCards cards={cards}></FoodCards>
+      <FoodCarts carts={carts}></FoodCarts>
       <AboutUs></AboutUs>
       <Testimonials></Testimonials>
     </div>

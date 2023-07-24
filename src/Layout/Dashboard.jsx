@@ -1,7 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 import { AiOutlineHome, AiOutlineBars, AiOutlineMenu, AiOutlineShopping, AiOutlineMail} from "react-icons/ai";
 import { MdRestaurant } from "react-icons/md";
-import { FaUsers,FaBook } from "react-icons/fa";
+import { GiWallet } from "react-icons/gi";
+import { BsStars } from "react-icons/bs";
+import { TbCalendarTime } from "react-icons/tb";
+import { FaUsers,FaBook, FaCalendarAlt, FaShoppingCart} from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -26,6 +29,13 @@ const Dashboard = () => {
             <li><Link to ="/dashboard/manageitems"><AiOutlineBars></AiOutlineBars>MANAGE ITEMS</Link></li>
             <li><Link to ="/dashboard/managebooking"><FaBook></FaBook>MANAGE BOOKING</Link></li>
             <li><Link to ="/dashboard/allusers"><FaUsers></FaUsers>ALL USERS</Link></li>
+
+            <li><Link to ="/dashboard/userhome"><AiOutlineHome></AiOutlineHome> USER HOME</Link></li>
+            <li><Link to="reservation"><FaCalendarAlt></FaCalendarAlt> RESERVATION</Link></li>
+            <li><Link to="paymenthistory"><GiWallet></GiWallet>PAYMENT HISTORY</Link></li>
+            <li><Link to="mycart"><FaShoppingCart></FaShoppingCart>MY CART</Link></li>
+            <li><Link to="addreview"><BsStars></BsStars>ADD REVIEW</Link></li>
+            <li><Link to="mybooking"><TbCalendarTime></TbCalendarTime>MY BOOKING</Link></li>
             <hr className="mr-8 ml-2" />
              <li><Link to="/"><AiOutlineHome></AiOutlineHome>HOME</Link></li>
              <li><Link to="/menu"><AiOutlineMenu></AiOutlineMenu>MENU</Link></li>

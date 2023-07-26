@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import ContactCard from "../../Contact/ContactCard";
 
 const Reservation = () => {
     const { user } = useContext(AuthContext);
@@ -19,17 +20,17 @@ const Reservation = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data =>{
-                if(data.insertedId){
+            .then(data => {
+                if (data.insertedId) {
                     reset();
-                     Swal.fire({
-                         position: 'top-end',
-                         icon: 'success',
-                         title: 'Book A Table Success.',
-                         showConfirmButton: false,
-                         timer: 1500
-                       })
-                 }
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Book A Table Success.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             })
     }
 
@@ -86,6 +87,25 @@ const Reservation = () => {
                     </div>
                     <button type="submit" className="btn flex mx-auto bg-[#D1A054] border-0 hover:bg-[#D99904] my-5">Book A Table <MdOutlineTableRestaurant className="text-[28px] pl-1"></MdOutlineTableRestaurant></button>
                 </form>
+            </div>
+
+            <SectionTitle heading="OUR LOCATION" subtitle="vist us"></SectionTitle>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 justify-center lg:mx-32 ">
+                <ContactCard
+                    logo="BiPhoneCall"
+                    title="phone"
+                    text="+38 (012) 34 56 789"
+                ></ContactCard>
+                <ContactCard
+                    logo="BiLocationPlus"
+                    title="ADDRESS"
+                    text="+38 (012) 34 56 789"
+                ></ContactCard>
+                <ContactCard
+                    logo="BiTime"
+                    title="time"
+                    text={`Mon - Fri: 08:00 - 22:00 Sat - Sun: 10:00 - 23:00`}
+                ></ContactCard>
             </div>
         </div>
     );
